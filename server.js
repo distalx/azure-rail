@@ -20,7 +20,7 @@ const server = new Hapi.Server(options);
 var plugins = [
   { register: Landing, options: {} },
   { register: People, options: {} },
-  { register: PrerenderPlugin, options: { token: process.env.PRERENDER_TOKEN } }
+  { register: PrerenderPlugin, options: { token: process.env.PRERENDER_TOKEN } },
   require('inert'),  // serve static content
   require('vision')  // views
 
