@@ -1,6 +1,6 @@
 const Hapi = require('hapi');
 const Path = require('path');
-
+const PrerenderPlugin = require('hapi-prerender');
 
 const Landing = require('./plugins/landing.js');
 const People = require('./plugins/people.js');
@@ -20,7 +20,7 @@ const server = new Hapi.Server(options);
 var plugins = [
   { register: Landing, options: {} },
   { register: People, options: {} },
-  // { register: Public, options: {} },
+  { register: PrerenderPlugin, options: { token: process.env.PRERENDER_TOKEN } }
   require('inert'),  // serve static content
   require('vision')  // views
 
